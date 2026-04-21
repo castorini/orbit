@@ -53,12 +53,38 @@ Downloads and merges evaluation benchmarks into a single `test.parquet` with up 
 # All 12 benchmarks (125 samples each)
 python prepare_eval_data.py \
     --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames,gaia,monaco,webwalkerqa,webshaper \
-    --local_dir ../train/data/eval-all-12-datasets
+    --local_dir ../train/data/eval-all-12-datasets \
+    --max_samples 125
 
 # Hard benchmarks only
 python prepare_eval_data.py \
     --data_sources frames,gaia,monaco \
-    --local_dir ../train/data/eval-hard-3-datasets
+    --local_dir ../train/data/eval-hard-3-datasets \
+    --max_samples 125
 ```
 
 **Note:** `monaco` is downloaded automatically from [`allenai/MoNaCo_Benchmark`](https://huggingface.co/datasets/allenai/MoNaCo_Benchmark). `Lk123/InfoSeek` is downloaded automatically from [`Lk123/InfoSeek`](https://huggingface.co/datasets/Lk123/InfoSeek).
+
+---
+
+## 3. Full test data — `prepare_test_data.py`
+
+Same as `prepare_eval_data.py` but uses **all available samples** (no `--max_samples` cap) and defaults to the 8 core benchmarks. Use this to produce the full held-out test parquet for final evaluation.
+
+**Default datasets:** `nq`, `triviaqa`, `popqa`, `hotpotqa`, `2wikimultihopqa`, `musique`, `bamboogle`, `frames`
+
+```bash
+export HF_HOME=/home/n3thakur/scratch/cache
+export HF_TOKEN=hf_xxxxx
+
+# All 8 benchmarks, full test sets
+python prepare_test_data.py \
+    --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames \
+    --local_dir ../eval/data/all-8-wikipedia-test-datasets
+```
+
+| | `prepare_eval_data.py` | `prepare_test_data.py` |
+|---|---|---|
+| Sample cap | `--max_samples 125` (default) | None — all samples |
+| Default datasets | All 12 (required arg) | 8 core benchmarks |
+| Use case | Validation during training | Final held-out test evaluation |

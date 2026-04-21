@@ -1,15 +1,17 @@
 """
-Prepare evaluation parquet files for orbit.
+Prepare full test parquet files for ORBIT test evaluation.
 
 Usage:
-    export HF_HOME=/home/n3thakur/scratch/cache
+    export HF_HOME=/u3/n3thakur/projects/cache
     export HF_TOKEN=hf_xxxxx
 
-    # All 12 benchmarks
-    python prepare_eval_data.py \
-        --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames,gaia,monaco,webwalkerqa,webshaper \
-        --local_dir ../eval/data/all-12-wikipedia-test-datasets \
-        --max_samples 125
+    python prepare_test_data.py \
+        --local_dir ../eval/data/all-8-wikipedia-test-datasets
+
+    # Custom dataset list:
+    python prepare_test_data.py \
+        --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames \
+        --local_dir ../eval/data/all-8-wikipedia-test-datasets
 
 """
 
@@ -36,7 +38,7 @@ def make_prompt(question: str) -> list:
     return [{"role": "user", "content": PROMPT_TEMPLATE.format(question=question)}]
 
 
-def load_dataset(data_source: str, max_samples: int) -> datasets.Dataset:
+def load_dataset(data_source: str) -> datasets.Dataset:
     print(f"Loading: {data_source}")
 
     if data_source == "webshaper":
@@ -120,27 +122,26 @@ def load_dataset(data_source: str, max_samples: int) -> datasets.Dataset:
         }
 
     ds = ds.map(process_fn, with_indices=True)
-
-    n = min(len(ds), max_samples)
-    ds = ds.shuffle(seed=42).select(range(n))
-    print(f"  {data_source}: {n} samples")
+    ds = ds.shuffle(seed=42)
+    print(f"  {data_source}: {len(ds)} samples")
     return ds
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_sources", type=str, required=True,
-                        help="Comma-separated benchmark names")
+    parser.add_argument(
+        "--data_sources", type=str,
+        default="nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames",
+        help="Comma-separated benchmark names",
+    )
     DATA_ROOT = os.path.join(os.path.dirname(__file__), "../train/data")
     parser.add_argument("--local_dir", type=str,
                         default=os.path.join(DATA_ROOT, "eval"),
                         help="Output directory for test.parquet")
-    parser.add_argument("--max_samples", type=int, default=125,
-                        help="Max samples per dataset (default: 125)")
     args = parser.parse_args()
 
     sources = [s.strip() for s in args.data_sources.split(",")]
-    all_ds = [load_dataset(src, args.max_samples) for src in sources]
+    all_ds = [load_dataset(src) for src in sources]
 
     final = datasets.concatenate_datasets(all_ds)
     os.makedirs(args.local_dir, exist_ok=True)
