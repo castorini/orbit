@@ -201,6 +201,12 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# orbit — generated data and training artefacts
+models/train/data/
+models/train/tmp/
+models/train/verl_step_records/
+models/train/wandb/
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
