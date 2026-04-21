@@ -4,12 +4,12 @@ Prepare evaluation parquet files for orbit.
 Usage:
     export HF_HOME=/home/n3thakur/scratch/cache
     export HF_TOKEN=hf_xxxxx
+    export DIR=/home/n3thakur/scratch/browsecomp
 
     # All 12 benchmarks
     python prepare_eval_data.py \
         --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames,gaia,monaco,webwalkerqa,webshaper \
-        --local_dir ../eval/data/all-12-wikipedia-test-datasets \
-        --max_samples 125
+        --local_dir ${DIR}/data/all-12-val-datasets-modified
 
 """
 

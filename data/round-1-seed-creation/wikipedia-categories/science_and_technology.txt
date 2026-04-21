@@ -1,0 +1,99 @@
+Category:Physics
+Category:Chemistry
+Category:Biology
+Category:Mathematics
+Category:Astronomy
+Category:Geology
+Category:Computer science
+Category:Engineering
+Category:Materials science
+Category:Nanotechnology
+Category:Robotics
+Category:Artificial intelligence
+Category:Machine learning
+Category:Quantum mechanics
+Category:Quantum field theory
+Category:General relativity
+Category:Thermodynamics
+Category:Particle physics
+Category:Nuclear physics
+Category:Optics
+Category:Astrophysics
+Category:Spaceflight
+Category:Satellites
+Category:Rocketry
+Category:Renewable energy
+Category:Climate change
+Category:Meteorology
+Category:Oceanography
+Category:Volcanology
+Category:Ecology
+Category:Evolutionary biology
+Category:Genetics
+Category:Bioinformatics
+Category:Neuroscience
+Category:Molecular biology
+Category:Virology
+Category:Biomedical engineering
+Category:Biotechnology
+Category:Genetic engineering
+Category:Cryonics
+Category:Telescopes
+Category:Microscopy
+Category:Chemical elements
+Category:Organic compounds
+Category:Polymers
+Category:Crystallography
+Category:Electronics
+Category:Semiconductors
+Category:Internet
+Category:Computer security
+Category:Operating systems
+Category:Programming languages
+Category:Free and open-source software
+Category:Computer networks
+Category:Supercomputers
+Category:Distributed computing
+Category:Cloud computing
+Category:Databases
+Category:Algorithms
+Category:Graph theory
+Category:Number theory
+Category:Combinatorics
+Category:Topology
+Category:Algebra
+Category:Geometry
+Category:Differential equations
+Category:Computational biology
+Category:Astrobiology
+Category:Exoplanets
+Category:Dark matter
+Category:String theory
+Category:Complex systems theory
+Category:Chaos theory
+Category:Computer vision
+Category:Natural language processing
+Category:Human–computer interaction
+Category:Embedded systems
+Category:Quantum computing
+Category:Virtual reality
+Category:Augmented reality
+Category:Blockchains
+Category:Mobile phones
+Category:Telecommunications
+Category:Software engineering
+Category:Programming paradigms
+Category:Data structures
+Category:Artificial life
+Category:Cryptography
+Category:Information theory
+Category:Game theory
+Category:Automation
+Category:Aerospace engineering
+Category:Mechanical engineering
+Category:Electrical engineering
+Category:Civil engineering
+Category:Chemical engineering
+Category:Computational chemistry
+Category:Systems biology
+Category:Computational complexity theory

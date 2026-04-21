@@ -1,0 +1,100 @@
+Category:Algebra
+Category:Mathematical analysis
+Category:Applied mathematics
+Category:Arithmetic
+Category:Calculus
+Category:Combinatorics
+Category:Computational mathematics
+Category:Discrete mathematics
+Category:Dynamical systems
+Category:Elementary mathematics
+Category:Experimental mathematics
+Category:Foundations of mathematics
+Category:Game theory
+Category:Geometry
+Category:Graph theory
+Category:Mathematical logic
+Category:Number theory
+Category:Order theory
+Category:Recreational mathematics
+Category:Topology
+Category:Probability
+Category:Statistics
+Category:Abstract algebra
+Category:Linear algebra
+Category:Prime numbers
+Category:Euclidean geometry
+Category:Non-Euclidean geometry
+Category:Algebraic geometry
+Category:Differential geometry
+Category:Algebraic topology
+Category:Mathematical physics
+Category:Chaos theory
+Category:Set theory
+Category:Category theory
+Category:Differential equations
+Category:Partial differential equations
+Category:History of mathematics
+Category:Philosophy of mathematics
+Category:Mathematics education
+Category:Women in mathematics
+Category:Mathematicians
+Category:Mathematics competitions
+Category:Mathematics organizations
+Category:Mathematics awards
+Category:Mathematical games
+Category:Theoretical computer science
+Category:Information theory
+Category:Fractals
+Category:Numbers
+Category:Probability distributions
+Category:Mathematical notation
+Category:Mathematical theorems
+Category:Mathematical proofs
+Category:Pseudomathematics
+Category:Mathematical tools
+Category:Mathematics and art
+Category:Mathematics and culture
+Category:Mathematical constants
+Category:Mathematical concepts
+Category:Polygons
+Category:Polyhedra
+Category:Curves
+Category:Surfaces
+Category:Polynomials
+Category:Special functions
+Category:Equations
+Category:Inequalities (mathematics)
+Category:Temporal paradoxes
+Category:Philosophical paradoxes
+Category:Undecidable problems
+Category:NP-complete problems
+Category:Computational complexity theory
+Category:Combinatorial optimization
+Category:Linear programming
+Category:Coding theory
+Category:Cryptographic algorithms
+Category:Cryptographic attacks
+Category:Ciphers
+Category:Classical cryptography
+Category:Decipherment
+Category:Disk encryption
+Category:Cryptographic hardware
+Category:History of cryptography
+Category:Key management
+Category:Cryptography law
+Category:National Security Agency cryptography
+Category:Cryptography organizations
+Category:Cryptographic primitives
+Category:Cryptographic protocols
+Category:Public-key cryptography
+Category:Quantum cryptography
+Category:Security engineering
+Category:Cryptographic software
+Category:Cryptography standards
+Category:Steganography
+Category:Symmetric-key cryptography
+Category:Theory of cryptography
+Category:Mathematical structures
+Category:Mathematical optimization
+Category:Complexity classes

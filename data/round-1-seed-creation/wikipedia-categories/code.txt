@@ -1,0 +1,100 @@
+Category:Algorithms
+Category:Anti-patterns
+Category:Programming contests
+Category:Code refactoring
+Category:Concurrent computing
+Category:Programming constructs
+Category:Program derivation
+Category:Data structures
+Category:Debugging
+Category:Computer programming folklore
+Category:Programming games
+Category:Programming idioms
+Category:Programming language syntax
+Category:Programming language topics
+Category:Programming languages
+Category:Computer libraries
+Category:Live coding
+Category:Programming paradigms
+Category:Programming principles
+Category:Software optimization
+Category:Quantum programming
+Category:Self-hosting software
+Category:Software design
+Category:Software design patterns
+Category:Source code
+Category:Source code generation
+Category:Streaming algorithms
+Category:Programming tools
+Category:Visual programming
+Category:Computer programmers
+Category:Computer programming books
+Category:Computer programming stubs
+Category:Cryptography
+Category:Cryptography lists and comparisons
+Category:Cryptographic algorithms
+Category:Applications of cryptography
+Category:Cryptographic attacks
+Category:Ciphers
+Category:Classical cryptography
+Category:Cryptographers
+Category:Decipherment
+Category:Disk encryption
+Category:Cryptologic education
+Category:End-to-end encryption
+Category:Cryptographic hardware
+Category:History of cryptography
+Category:Key management
+Category:Cryptography law
+Category:National Security Agency cryptography
+Category:Cryptography organizations
+Category:Cryptographic primitives
+Category:Cryptographic protocols
+Category:Public-key cryptography
+Category:Cryptography publications
+Category:Quantum cryptography
+Category:Security engineering
+Category:Cryptographic software
+Category:Cryptography standards
+Category:Steganography
+Category:Symmetric-key cryptography
+Category:Theory of cryptography
+Category:Cryptography stubs
+Category:Computer programmers
+Category:Algorithms
+Category:Mathematical logic
+Category:Theoretical computer science
+Category:Anti-patterns
+Category:Programming contests
+Category:Code refactoring
+Category:Concurrent computing
+Category:Programming constructs
+Category:Program derivation
+Category:Data structures
+Category:Debugging
+Category:DLL injection
+Category:Computer programming folklore
+Category:Programming games
+Category:Programming idioms
+Category:Application programming interfaces
+Category:Technical communication
+Category:Computer libraries
+Category:Live coding
+Category:Method (computer programming)
+Category:Programming paradigms
+Category:Programming principles
+Category:Software optimization
+Category:Quantum programming
+Category:Self-hosting software
+Category:Software design
+Category:Software design patterns
+Category:Source code
+Category:Source code generation
+Category:Streaming algorithms
+Category:Programming tools
+Category:Visual programming
+Category:Python (programming language)
+Category:Class-based programming languages
+Category:Scripting languages
+Category:Text-oriented programming languages
+Category:Functional programming
