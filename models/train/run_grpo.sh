@@ -2,7 +2,7 @@
 set -x
 
 unset ROCR_VISIBLE_DEVICES
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0,1,2,3 # We ran this on 4xH100 GPUs
 
 RETRIEVER_PORT=8280
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,9 +13,9 @@ dataset_name="${2:-mix-nq-hotpotqa-infoseek-ratio-1-1-1-modified}"
 train_data="${SCRIPT_DIR}/data/${dataset_name}/train.parquet"
 val_data="${SCRIPT_DIR}/data/${dataset_name}/test.parquet"
 
-export TRITON_CACHE_DIR=${TRITON_CACHE_DIR:-/home/n3thakur/scratch/triton_cache}
-export HF_HOME=/home/n3thakur/scratch/cache
-export DATASETS_HF_HOME=/home/n3thakur/scratch/cache
+# export TRITON_CACHE_DIR=${TRITON_CACHE_DIR:-/home/n3thakur/scratch/triton_cache}
+# export HF_HOME=/home/n3thakur/scratch/cache
+# export DATASETS_HF_HOME=/home/n3thakur/scratch/cache
 
 # Retriever
 retriever_url="http://127.0.0.1:${RETRIEVER_PORT}/retrieve"
