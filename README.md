@@ -13,22 +13,29 @@ ORBIT: Open Web-Reasoning for Information Retrieval Tasks
 
 <p align="center">
 |
-<a href="https://huggingface.co/orbit-ai"><b>Models</b></a> |
-<a href="https://huggingface.co/datasets/orbit-ai"><b>Datasets</b></a> |
+<a href="https://arxiv.org/abs/2604.01195"><b>Paper</b></a> |
+<a href="https://huggingface.co/orbit-ai/orbit-4b-v0.1"><b>Model</b></a> |
+<a href="https://huggingface.co/datasets/orbit-ai/orbit-20k"><b>Dataset</b></a> |
 <a href="data/README.md"><b>Data Pipeline</b></a> |
 <a href="models/train/README.md"><b>Training</b></a> |
 <a href="models/eval/README.md"><b>Evaluation</b></a> |
 </p>
 
 <p align="center">
+  <a href="https://arxiv.org/abs/2604.01195">
+    <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2604.01195-b31b1b.svg">
+  </a>
   <a href="https://github.com/castorini/orbit/stargazers">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/castorini/orbit?style=flat&logo=github&color=yellow">
   </a>
   <a href="https://github.com/castorini/orbit/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
   </a>
-  <a href="https://huggingface.co/orbit-ai">
-    <img alt="HuggingFace" src="https://img.shields.io/badge/🤗-orbit--ai-yellow">
+  <a href="https://huggingface.co/orbit-ai/orbit-4b-v0.1">
+    <img alt="Model" src="https://img.shields.io/badge/🤗-orbit--4b--v0.1-yellow">
+  </a>
+  <a href="https://huggingface.co/datasets/orbit-ai/orbit-20k">
+    <img alt="Dataset" src="https://img.shields.io/badge/🤗-orbit--20k-blue">
   </a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10+-blue.svg">
 </p>
