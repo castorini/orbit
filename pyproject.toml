@@ -1,0 +1,26 @@
+[project]
+name = "orbit"
+version = "0.1.0"
+description = "Open Web-Reasoning for Information Retrieval Tasks"
+requires-python = ">=3.10"
+
+dependencies = [
+    "datasets",
+    "huggingface-hub",
+    "openai",
+    "tqdm",
+    "requests",
+    "mw_category_members",
+    "selenium",
+    "undetected-chromedriver",
+    "beautifulsoup4",
+    "markdownify",
+    "ddgs",
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

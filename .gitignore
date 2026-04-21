@@ -201,6 +201,28 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# orbit — generated data and training artefacts
+models/train/data/
+models/train/tmp/
+models/train/verl_step_records/
+models/train/wandb/
+
+# data pipeline outputs (large generated JSONL files)
+data/outputs/round-*/
+data/round-*/results/
+
+# evaluation outputs and indices
+models/eval/data/
+models/eval/index/
+models/eval/results/
+
+# generated parquet files
+*.parquet
+
+# misc
+*.jsonl.tmp
+*.bak
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
