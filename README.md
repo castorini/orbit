@@ -2,8 +2,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/orbit-with-name-logo.png">
-    <img alt="ORBIT" src="images/orbit-with-name-logo.png" width=30%>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/orbit-with-name-logo.png">
+    <img alt="ORBIT" src="assets/orbit-with-name-logo.png" width=30%>
   </picture>
 </p>
 
@@ -43,11 +43,7 @@ ORBIT: Open Web-Reasoning for Information Retrieval Tasks
 ---
 
 <p align="center">
-  <a href="images/orbit-flowchart.drawio.pdf">
-    <img alt="ORBIT Pipeline Flowchart" src="images/orbit-flowchart.drawio.pdf" width="85%">
-  </a>
-  <br>
-  <em>ORBIT 4-round data pipeline — <a href="images/orbit-flowchart.drawio.pdf">Open full flowchart</a></em>
+  <img src="assets/orbit-flowchart.png" alt="ORBIT Flowchart">
 </p>
 
 ---
