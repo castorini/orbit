@@ -19,6 +19,9 @@ dependencies = [
     "fastapi",
     "uvicorn[standard]",
     "pydantic",
+    "aiohttp",
+    "aiofiles",
+    "trafilatura",
 ]
 
 [build-system]
