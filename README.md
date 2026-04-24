@@ -26,18 +26,28 @@ ORBIT: Open Web-Reasoning for Information Retrieval Tasks
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2604.01195-b31b1b.svg">
   </a>
   <a href="https://github.com/castorini/orbit/stargazers">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/castorini/orbit?style=flat&logo=github&color=yellow">
-  </a>
-  <a href="https://github.com/castorini/orbit/blob/main/LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/castorini/orbit?style=flat&logo=github&color=red">
   </a>
   <a href="https://huggingface.co/orbit-ai/orbit-4b-v0.1">
     <img alt="Model" src="https://img.shields.io/badge/🤗-orbit--4b--v0.1-yellow">
   </a>
   <a href="https://huggingface.co/datasets/orbit-ai/orbit-20k">
-    <img alt="Dataset" src="https://img.shields.io/badge/🤗-orbit--20k-blue">
+    <img alt="Dataset" src="https://img.shields.io/badge/🤗-orbit--20k-yellow">
+  </a>
+  <a href="https://github.com/castorini/orbit/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
   </a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10+-blue.svg">
+</p>
+
+---
+
+<p align="center">
+  <a href="images/orbit-flowchart.drawio.pdf">
+    <img alt="ORBIT Pipeline Flowchart" src="images/orbit-flowchart.drawio.pdf" width="85%">
+  </a>
+  <br>
+  <em>ORBIT 4-round data pipeline — <a href="images/orbit-flowchart.drawio.pdf">Open full flowchart</a></em>
 </p>
 
 ---
@@ -45,9 +55,9 @@ ORBIT: Open Web-Reasoning for Information Retrieval Tasks
 ## Features
 
 - 🌐 **4-round data pipeline** — turns raw Wikipedia seeds into a verified multi-hop QA dataset through generation, self-verification, and external judging
+- 💸 **Zero API spend** — Zero dollars spent on expensive Web Search APIs or search-enabled LLMs; the entire pipeline runs on Selenium + DeepSeek Chat and uses search aggregators such as DDGS
 - 🤖 **GRPO training with web search** — trains search-augmented LLMs via [verl-tool](https://github.com/TIGER-AI-Lab/verl-tool) with a parallel multi-backend DDGS retrieval server
 - 📊 **12-benchmark evaluation suite** — covers single-hop (NQ, TriviaQA, PopQA), multi-hop (HotpotQA, 2WikiMHQA, MuSiQue), and hard reasoning (FRAMES, GAIA, MoNaCo) benchmarks
-- 🔍 **BGE retrieval index** — dense retrieval with FAISS for closed-domain evaluation
 
 ## 📚 Contents
 
@@ -65,36 +75,95 @@ ORBIT: Open Web-Reasoning for Information Retrieval Tasks
 ORBIT QA pairs are built through four sequential rounds. See [`data/README.md`](data/README.md) for the full overview.
 
 | Round | What it does | Key script |
-|-------|-------------|------------|
+|-------|--------------|------------|
 | 1 | Wikipedia category pages → seed titles | `create_seeds.py` |
-| 2 | Seeds → multi-hop inverted questions + answers | `deepseek_generate_qa.py` |
-| 3 | Self-verification via DeepSeek web search | `deepseek_self_verify.py` |
-| 4 | External judge via vLLM (gpt-oss-120b) | `external_verification.py` |
+| 2 | Seeds → multi-hop reasoning questions + answers | `deepseek_generate_qa.py` |
+| 3 | Self-verification via DeepSeek Chat + Selenium | `deepseek_self_verify.py` |
+| 4 | External verification on scraped documents via vLLM | `external_verification.py` |
 
-```bash
-python data/round-1-seed-creation/create_seeds.py --all
-bash data/round-2-qa-generation/deepseek_generate_qa.sh
-bash data/round-3-self-verification/deepseek_self_verify.sh
-bash data/round-4-external-verification/external_verification.sh
+<details>
+<summary><b>Dataset Example</b> — TV Shows &amp; Movies domain (click to expand)</summary>
+<br>
+
+> **Question:** What was the exact runtime (minutes) of the **2017 animated feature set inside a smartphone's messaging application**, **directed by a filmmaker previously known for sequels to popular children's franchises**, **featuring a protagonist whose facial expression malfunctions**, **with voice casting that includes a lead actor from a critically acclaimed sitcom**, and **produced by a studio that later won an Oscar for Spider-Man animation**?
+>
+> **Answer: 86 minutes**
+
+**Verification / Summary of Supporting Facts:**
+
+| | Clue | Supporting Evidence |
+|---|---|---|
+| ✅ | **Animated Set** | *The Emoji Movie* (2017), set inside a smartphone messaging app world called Textopolis |
+| ✅ | **Filmmaker** | *Tony Leondis*, previously directed sequels: *Lilo & Stitch 2*, *Kung Fu Panda: Secrets of the Masters* |
+| ✅ | **Protagonist** | *Gene*, the main character in *The Emoji Movie*, struggles with malfunctioning facial expressions |
+| ✅ | **Voice Cast** | *T.J. Miller*, lead actor from the HBO sitcom *Silicon Valley* |
+| ✅ | **Studio** | *Sony Pictures Animation*, which later won an Oscar for *Spider-Man: Into the Spider-Verse* |
+
+</details>
+
+
+## 💾 Installation
+
+Installing `uv` itself:
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-## Quick Start
-
-**Install:**
 ```bash
 uv sync
+source .venv/bin/activate
 ```
 
-**Train:**
+## Training/Evaluation Data
+
+Prior to training & evaluating search agents, you should prepare the training, eval and test datasets. See [`models/data_process`](models/data_process/) for the full data processing scripts.
+
+```bash
+export HF_HOME=/u3/n3thakur/projects/cache
+export HF_TOKEN=hf_...
+```
+
+*Training data* — ORBIT + NQ + HotpotQA mixed at a 1:1:1 ratio:
+```bash
+python models/data_process/prepare_train_data.py \
+    --datasets 'nq,hotpotqa,orbit-ai/orbit-20k' \
+    --local_dir models/train/data/mix-nq-hotpotqa-orbit-ratio-1-1-1 \
+    --ratio 1:1:1
+```
+
+*Eval data* — all 12 validation benchmarks:
+```bash
+python models/data_process/prepare_eval_data.py \
+    --data_sources nq,triviaqa,popqa,hotpotqa,2wikimultihopqa,musique,bamboogle,frames,gaia,monaco,webwalkerqa,webshaper \
+    --local_dir models/eval/data/all-12-val-datasets
+```
+
+*Test data* — 8 Wikipedia test benchmarks:
+```bash
+python models/data_process/prepare_test_data.py \
+    --local_dir models/eval/data/all-8-wikipedia-test-datasets
+```
+
+## Training Code
+
+To train search agents using ORBIT, please see [models/train](models/train/).
+
 ```bash
 export HF_TOKEN="hf_..."
 export WANDB_API_KEY="..."
-bash models/train/run_grpo.sh
+
+bash models/train/ddgs_web_search.sh # run ddgs web server
+bash models/train/run_grpo.sh # train search agent with verl-tool
 ```
 
-**Evaluate:**
+## Evaluation Code
+
+To evaluate search agents trained using ORBIT, please see [models/eval](models/eval/).
+
 ```bash
-bash models/eval/run_eval.sh
+
+bash models/eval/retrieval_server_bge.sh # run BGE index using faiss (conda env required)
+bash models/eval/run_eval.sh # evaluate search agent on Wikipedia datasets
 ```
 
 ## Repository Structure
@@ -103,15 +172,14 @@ bash models/eval/run_eval.sh
 orbit/
 ├── data/
 │   ├── round-1-seed-creation/         # Wikipedia pages → seed JSONL
-│   ├── round-2-qa-generation/         # Seeds → inverted QA pairs (DeepSeek browser)
-│   ├── round-3-self-verification/     # QA pairs → self-verified answers (DeepSeek browser)
+│   ├── round-2-qa-generation/         # Seeds → inverted QA pairs (DeepSeek)
+│   ├── round-3-self-verification/     # QA pairs → self-verified answers (DeepSeek)
 │   ├── round-4-external-verification/ # Verified pairs → externally judged (vLLM)
 │   └── outputs/                       # Intermediate + final JSONL files
 ├── models/
 │   ├── train/                         # GRPO training + DDGS retrieval server
 │   ├── eval/                          # BGE retrieval index + evaluation
 │   └── data_process/                  # Prepare train/eval parquet files
-├── images/
 ├── pyproject.toml
 └── README.md
 ```
@@ -125,9 +193,17 @@ We thank the following open-source projects:
 - [Search-R1](https://github.com/PeterGriffinJin/Search-R1) for retrieval server design inspiration and initial experiments.
 
 
+## Contact
+
+If you have any questions or suggestions, please contact us at:
+- Nandan Thakur: [nandan.thakur@uwaterloo.ca](mailto:nandan.thakur@uwaterloo.ca)
+- Zijian Chen: [s42chen@uwaterloo.ca](mailto:s42chen@uwaterloo.ca)
+- Xueguang Ma: [x93ma@uwaterloo.ca](mailto:x93ma@uwaterloo.ca)
+
+
 ## Citation
 
-If you find this repository helpful, feel free to cite our preprint [ORBIT: Scalable and Verifiable Data Generation for Search Agents on a Tight Budget](https://arxiv.org/abs/2604.01195):
+If you find this data generation repository helpful, please cite our preprint work [ORBIT: Scalable and Verifiable Data Generation for Search Agents on a Tight Budget](https://arxiv.org/abs/2604.01195):
 
 ```
 @misc{thakur2026orbit,
